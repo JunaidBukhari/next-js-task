@@ -1,0 +1,117 @@
+/* Tasks.module.css */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.container label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.container input,
+.container textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.container textarea {
+  resize: vertical;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #f9f9f9;
+}
+.routingButtons {
+  display: flex;
+  justify-content: space-between;
+}
+.logoutButton {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #f44;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  background-color: #d33;
+}
+.uploadCVButton {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: rgb(2, 89, 0);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.uploadCVButton:hover {
+  background-color: rgb(1, 63, 0);
+}
+.uploadCVButton2 {
+  margin-bottom: 20px;
+  padding: 8.1px 20px;
+  margin-right: 10px;
+  background-color: rgb(6, 160, 237);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
