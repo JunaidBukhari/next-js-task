@@ -14,8 +14,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const endpoint = mode === 'login' ? 'auth/login' : 'user/create';
-      const response = await fetch(`http://localhost:3000/${endpoint}`, {
+      const endpoint = mode === 'login' ? '/login' : '/create';
+      const response = await fetch(`http://localhost:3000/user${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

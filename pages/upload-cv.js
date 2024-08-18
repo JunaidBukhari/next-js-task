@@ -10,6 +10,7 @@ export default function UploadCV() {
   const [success, setSuccess] = useState('');
   const router = useRouter();
   const userId = parseInt(Cookies.get('userId'), 10);
+  const accessToken = Cookies.get('accessToken');
 
   const handleLogout = () => {
     Cookies.remove('accessToken');
@@ -56,6 +57,7 @@ export default function UploadCV() {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify({ cvUrl }),
         }

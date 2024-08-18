@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import styles from './page.module.css';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
@@ -15,10 +15,8 @@ export default function Home() {
     }
   }, [accessToken]);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>Test Task</p>
-      </div>
-    </main>
+    <div className={styles.description}>
+      <p>Test Task</p>
+    </div>
   );
 }
