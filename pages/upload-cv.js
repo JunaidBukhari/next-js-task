@@ -31,42 +31,25 @@ export default function UploadCV() {
     setUploading(true);
     setError('');
     setSuccess('');
-
     const formData = new FormData();
     formData.append('file', cv);
-    formData.append('upload_preset', 'kq6ywrbn');
 
     try {
-      const response = await fetch(
-        'https://api.cloudinary.com/v1_1/junaidbukhari/image/upload',
-        {
-          method: 'POST',
-          body: formData,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error('Failed to upload CV to Cloudinary');
-      }
-
-      const data = await response.json();
-      const cvUrl = data.secure_url;
       const backendResponse = await fetch(
         `http://localhost:3000/user/${userId}/cv`,
         {
           method: 'PUT',
           headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${accessToken}`,
           },
-          body: JSON.stringify({ cvUrl }),
+          body: formData,
         }
       );
-
+      const responseData = await backendResponse.json();
       if (!backendResponse.ok) {
         throw new Error('Failed to save CV link');
       }
-      Cookies.set('cvUrl', cvUrl);
+      Cookies.set('cvUrl', responseData.cvUrl);
       router.push('/tasks');
       setSuccess('CV uploaded successfully!');
       setCV(null);
@@ -83,7 +66,9 @@ export default function UploadCV() {
       <input
         type="file"
         accept=".pdf,.doc,.docx"
-        onChange={(e) => setCV(e.target.files[0])}
+        onChange={(e) => {
+          setCV(e.target.files[0]);
+        }}
         className={styles.fileInput}
       />
       <button
