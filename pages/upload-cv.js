@@ -32,18 +32,29 @@ export default function UploadCV() {
     setError('');
     setSuccess('');
 
-    const formData = new FormData();
-    formData.append('file', cv);
-    formData.append('upload_preset', 'kq6ywrbn');
-
     try {
-      const response = await fetch(
-        'https://api.cloudinary.com/v1_1/junaidbukhari/image/upload',
+      const signedUrlResponse = await fetch(
+        'http://localhost:3000/user/signed-url',
         {
-          method: 'POST',
-          body: formData,
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         }
       );
+      const { signedUrl, timestamp, signature, api_key } =
+        await signedUrlResponse.json();
+
+      const formData = new FormData();
+      formData.append('file', cv);
+      formData.append('timestamp', timestamp);
+      formData.append('signature', signature);
+      formData.append('api_key', api_key);
+      formData.append('upload_preset', 'kq6ywrbn');
+      const response = await fetch(signedUrl, {
+        method: 'POST',
+        body: formData,
+      });
 
       if (!response.ok) {
         throw new Error('Failed to upload CV to Cloudinary');
